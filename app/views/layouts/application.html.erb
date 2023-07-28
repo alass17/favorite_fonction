@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsAjaxTaskApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <% if !user_signed_in? %>
+      <%= link_to 'Sign up', new_user_registration_path  %>
+      <%= link_to 'Sign in', new_user_session_path %>
+    <% else %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete  %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
